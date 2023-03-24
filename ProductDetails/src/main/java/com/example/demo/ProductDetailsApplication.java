@@ -11,9 +11,6 @@ public class ProductDetailsApplication {
 		SpringApplication.run(ProductDetailsApplication.class, args);
 		System.out.println("Hi");
 	}
-//	@Bean
-//	public RestTemplate restTemplate() {
-//		return new RestTemplate();
-//	}
+
 
 }

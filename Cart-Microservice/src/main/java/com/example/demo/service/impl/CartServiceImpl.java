@@ -35,9 +35,7 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public String removeItemfromCart(Long cartid) {
 		Cart check = cartrepository.findById(cartid).orElseThrow(() -> new ResourceNotFound("id","id",cartid));
-		
-//			Cart existingcart = cartrepository.findById(Long.parseLong(check)).orElseThrow(() -> new ResourceNotFound("id","id",cart.getUserid()));
-//			existingcart.setQuantity(existingcart.getQuantity() - cart.getQuantity());
+
 			cartrepository.deleteById(cartid);
 
 		return "Removed from Cart";	

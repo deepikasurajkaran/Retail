@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Product;
-import com.example.demo.model.ProductWrapper;
 import com.example.demo.service.ProductService;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -36,37 +35,10 @@ public class productcontroller {
 		
 	}
 	
-//	@GetMapping({"category"})
-//	public ResponseEntity<List<Product>> getProductsByCategoryName(@PathVariable("category") String categoryName){
-//		List<Product> products = productservice.getProductByCategoryName(categoryName);
-//		if(products.isEmpty()) {
-//			return ResponseEntity.notFound().build();
-//		}
-//		else {
-//			return ResponseEntity.ok(products);
-//		}
-//	}
-	
-//	@GetMapping({"categoryid"})
-//	public ResponseEntity<List<Product>> getProductsByCategoryId(@PathVariable("categoryid") Long catId){
-//		List<Product> products = productservice.getProductsByCategoryId(catId);
-//		if(products.isEmpty()) {
-//			return ResponseEntity.notFound().build();
-//		}
-//		else {
-//			return ResponseEntity.ok(products);
-//		}
-//	}
-//-----------------
 	@GetMapping("/category/{categoryid}")
 	public List<Product> getProductsByCategoryId(@PathVariable("categoryid") Long category_id){
 		return productservice.getProductsByCategoryId(category_id);
 	}
-//	------------
 
-//	@GetMapping("/category/{categoryid}")
-//	public List<ProductWrapper> findAllBycategory_id(@PathVariable("categoryid") Long category_id){
-//		return productservice.findAllBycategory_id(category_id);
-//	}
 	
 }

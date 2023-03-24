@@ -13,14 +13,11 @@ public class SearchServiceImpl implements SearchService {
 	@Autowired
 	private SearchRepo searchrepo;
 	
-	
 
 	public SearchServiceImpl(SearchRepo searchrepo) {
 		super();
 		this.searchrepo = searchrepo;
 	}
-
-
 
 	@Override
 	public List<Search> getSearchproducts(String name) {

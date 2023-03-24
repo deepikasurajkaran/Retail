@@ -19,7 +19,7 @@ public class UserServImpl implements UserService{
 	public String save(User user) {
 		if(!userep.existsById(user.getEmail())) {
 			userep.save(user);
-			return user.getName()+"your registration is sucessful";
+			return user.getName()+" your registration is successful";
 		
 		}
 		else {
@@ -27,9 +27,6 @@ public class UserServImpl implements UserService{
 			return "EmailId already Exists" ;
 		}
 	}
-//	public User getUserById(String email) {
-//		// TODO Auto-generated method stub
-//		return userep.findById(email).orElseThrow(()->new ResourceNotFound("userEmail","Email",email));
-//	}
+
 
 }

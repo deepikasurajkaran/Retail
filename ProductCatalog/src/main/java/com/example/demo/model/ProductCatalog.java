@@ -22,15 +22,7 @@ public class ProductCatalog {
 	private Long Id;
 	@Column(name="name")
 	private String name;
-//	
-//	@ManyToMany(fetch=FetchType.LAZY)
-//	@JoinTable(
-//			name="category_products",
-//			joinColumns = @JoinColumn(name="category_id"),
-//			inverseJoinColumns = @JoinColumn(name="product_id"))
-//	private List<Product> products;
-//	
-//	
+
 	public ProductCatalog() {
 		
 	}

@@ -22,9 +22,6 @@ public class userController {
 
 	@PostMapping("/signup")
 	public String saveEmployee(@RequestBody User user){
-//		if(userservice.getUserById(user.getEmail())!=null) {
-//			return "Account already exists";
-//		}
 		return userservice.save(user);
 				 
 	}

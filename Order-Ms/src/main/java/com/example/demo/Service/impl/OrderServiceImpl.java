@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Repository.OrdersRepository;
 import com.example.demo.Service.OrdersService;
-import com.example.demo.model.Cart;
 import com.example.demo.model.Orders;
 @Service
 public class OrderServiceImpl implements OrdersService {

@@ -7,8 +7,6 @@ import com.example.demo.model.ProductCatalog;
 public interface CatalogService {
 	List<ProductCatalog> getallCategories();
 	ProductCatalog getCategoryById(long id);
-//	ProductCatalog getCategoryByname(String name);
-
 	ProductCatalog getCategoryByname(String name);
 
 }
