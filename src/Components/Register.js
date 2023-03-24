@@ -10,8 +10,23 @@ const Register =()=>{
     const [email,setemail]=useState('');
     const [pass,setpass]=useState('');
     const [phone,setphone]=useState('');
+    const[error,setError]=useState(null);
     function handleSubmit(e){
         e.preventDefault();
+        if(!name.trim()){
+            setError("Name is required");
+            return;
+        }
+        if(!email.trim()){
+            setError("Email is required");
+            return;
+        }
+        const phoneRegex=/^\d{10}$/;
+        if(!phoneRegex.test(phone)){
+            setError("Phone number is invalid");
+            return;
+        }
+       
         axios.post("http://localhost:8082/api/users/signup",
         {
              "name":name,
@@ -45,7 +60,7 @@ const Register =()=>{
     return(
         <div className="bg-img">
             <form className="form" onSubmit={(e)=>handleSubmit(e)}>
-                <h1>Register Here!</h1>
+                <h3>Register Here!</h3>
                 <label for="fullname">Full Name</label>
                 <input type="text" id = "fullname" autoComplete='off' value={name} onChange={namehandler}/>
                 <label for="email">Email</label>
@@ -54,9 +69,12 @@ const Register =()=>{
                 <input type="password" id="password" autoComplete='off' value={pass} onChange={passhandler}/>
                 <label for="phonenumber">phonenumber</label>
                 <input type="tel" id="phonenumber" autoComplete='off' value={phone} onChange={phonehandler}/>
+                <br></br>
+                {error && <div style={{color:"red"}}>{error}</div>}
                 <button type="submit" >Register</button>
                 <br></br>
                 {/* onClick={(e)=>nav("/")} */}
+                
                 <p>Already have an account?<Link to="/login">Login here</Link></p>
             </form>
            

@@ -3,17 +3,6 @@ import axios from "axios";
 function Orders() {
     const [order, setorders] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:8089/loginuser/${localStorage.getItem('jwtToken')}`)
-    //         .then(res => {
-    //             axios.get(`http://localhost:8098/orders/getorders/${res.data}`)
-    //                 .then(response => {
-    //                     setorders(response.data);
-    //                 }).finally(
-    //                     console.log(order)
-    //                 )
-    //         })
-    // },[]);
     useEffect(() => {
         async function fetchData() {
             axios.get(`http://localhost:8089/loginuser/${localStorage.getItem('jwtToken')}`)
@@ -29,15 +18,12 @@ function Orders() {
         fetchData();
     }, []);
 
-
-
     return (
         <>
             <table className="table ">
                 <thead>
                     <tr>
                         <th>OrderId</th>
-                        {/* <th>ProductId</th> */}
                         <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Price</th>

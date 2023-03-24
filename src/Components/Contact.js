@@ -1,4 +1,10 @@
+import { isExpired } from "react-jwt";
 function Contact() {
+    if(isExpired(localStorage.getItem('jwtToken'))){
+        console.log("expired");
+        alert("Session Timeout Please login again");
+        window.location.href="/";
+    }
     return (
         <>
             

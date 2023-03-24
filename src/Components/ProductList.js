@@ -1,6 +1,12 @@
 import './products.css';
 import axios from 'axios';
+import { isExpired } from "react-jwt";
 function ProductList({ products }) {
+    if(isExpired(localStorage.getItem('jwtToken'))){
+        console.log("expired");
+        alert("Session Timeout Please login again");
+        window.location.href="/";
+    }
     const handleAddToCart = (e,productid,name,price) => {
         e.preventDefault();
         axios.get(`http://localhost:8089/loginuser/${localStorage.getItem('jwtToken')}`)

@@ -2,8 +2,15 @@ import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { isExpired } from "react-jwt";
 // import Payment from "./Payment";
 function Checkout() {
+    if(isExpired(localStorage.getItem('jwtToken'))){
+        console.log("expired");
+        alert("Session Timeout Please login again");
+        window.location.href="/";
+    }
+    
     let nav = useNavigate();
     const [address, setaddress] = useState('');
     const[phonenumber,setPhonenumber]=useState('');

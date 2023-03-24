@@ -1,6 +1,12 @@
 // import './About.css';
 import { NavLink } from 'react-router-dom';
+import { isExpired } from "react-jwt";
 function About(){
+    if(isExpired(localStorage.getItem('jwtToken'))){
+        console.log("expired");
+        alert("Session Timeout Please login again");
+        window.location.href="/";
+    }
     return(
                 <div>
                     <div className="container py-4 my-4">

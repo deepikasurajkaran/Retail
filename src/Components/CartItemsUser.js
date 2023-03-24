@@ -1,8 +1,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { isExpired } from "react-jwt";
+import { useNavigate } from "react-router-dom";
 function CartItemsUser() {
+    let nav = useNavigate();
+    if(isExpired(localStorage.getItem('jwtToken'))){
+        console.log("expired");
+        alert("Session Timeout Please login again");
+        window.location.href="/";
+    }
     const [cartItems, setCartItems] = useState([]);
     useEffect(() => {
         async function fetchData() {
@@ -46,6 +54,16 @@ function CartItemsUser() {
         .catch(error => console.error(error));
     }
     const totalprice = cartItems.map(item=>item.quantity*item.price).reduce((accumulator,currentValue)=>accumulator+currentValue,0);
+    function submitOrder(){
+        if(totalprice===0){ 
+            alert("Total price cannot be 0.Please add items to your order");
+            nav("/homepage");
+            return;
+        }
+        else{
+            nav("/checkout");
+        }
+    }
     return (
         <div>
             <>
@@ -82,8 +100,10 @@ function CartItemsUser() {
                 </table>
                 <br></br>
                 <h5>Total Price of all products : ${totalprice}</h5>
-                {/* <button onClick={handlePlaceOrder}>Place Order</button> */}
-                <Link to="/checkout" className="btn btn-dark mx-4 mr-auto  ">Place Order</Link>
+                
+                <br></br>
+                <button className="btn btn-dark mx-4 mr-auto" onClick={submitOrder}>Place Order</button>
+                {/* <Link to="/checkout" onClick={submitOrder} className="btn btn-dark mx-4 mr-auto  ">Place Order</Link> */}
                
             </>
         </div>

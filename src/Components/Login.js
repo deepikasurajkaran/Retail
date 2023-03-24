@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 import './Login.css';
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import jwtDecode from "jwt-decode";
-
-
 const Login = () => {
     const [email, setemail] = useState('');
     const [pass, setpass] = useState('');
@@ -30,13 +27,14 @@ const Login = () => {
             }
             )
     }
-    
+    // isTokenExpired('jwtToken')
     const emailhandler = (event) => {
         setemail(event.target.value);
     }
     const passhandler = (event) => {
         setpass(event.target.value);
     }
+
     return (
         <div className="div1">
             <form className="form" onSubmit={handleSubmit}>
